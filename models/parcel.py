@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Parcel():
 
     def __init__(self, start, destination):
@@ -50,7 +51,5 @@ class Parcel():
             status = "Complete"
         else:
             status = "Pending"
-        string = "{} to {} – {}".format(self.start,
-                                        self.destination,
-                                        status)
+            string = "{} to {} – {}".format(self.start, self.destination, status)
         return string

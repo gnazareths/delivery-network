@@ -90,7 +90,7 @@ class Simulation():
                 city.incoming_parcels = []
 
                 ## store values
-                if True:
+                if t % self.timesteps == 0:
 
                     ## store parcels
                     cities_parcels[key].append(len(city.parcels))
