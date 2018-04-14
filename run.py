@@ -26,7 +26,7 @@ rio_complete_trips = []
 rio_incomplete_waiting_times = []
 rio_complete_waiting_times = []
 
-for i in range(1000):
+for i in range(100):
 
     sim = Simulation(cities, time_table, next_cities, truck_capacity, n_trucks, timesteps, parcels_per_city)
     parcels, complete_trips, complete_waiting_times, incomplete_waiting_times  = sim.run()
