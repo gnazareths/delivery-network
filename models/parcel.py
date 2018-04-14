@@ -22,6 +22,7 @@ class Parcel():
     def complete(self):
 
         self.completed = True
+        self.duration += 14
 
     def update_time(self):
 

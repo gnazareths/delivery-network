@@ -113,8 +113,11 @@ class Simulation():
                     cities_complete_waiting_times[key].append(mean_complete_waiting_times)
                     cities_incomplete_waiting_times[key].append(mean_incomplete_waiting_times)
 
+        for key in self.cities.keys():
+            city = self.cities[key]
             city.parcels = []
             city.complete_trips = []
+
 
         return (cities_parcels,
                     cities_complete_trips,
