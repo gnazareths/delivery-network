@@ -24,6 +24,13 @@ class Simulation():
         self.timesteps = timesteps
         self.parcels_per_city = parcels_per_city
 
+    def generate_trucks(self, trucks):
+        for _ in range(self.n_trucks):
+            key = np.random.choice(self.cities.keys())
+            city = self.cities[key]
+            truck = Truck(city, self.time_table)
+            trucks.append(truck)
+
     def run(self):
 
         ## store values
@@ -35,12 +42,7 @@ class Simulation():
         cities_incomplete_waiting_times = {city:[] for city in self.cities.keys()}
 
         ## create the trucks
-        ## can be refactored
-        for _ in range(self.n_trucks):
-            key = np.random.choice(self.cities.keys())
-            city = self.cities[key]
-            truck = Truck(city, self.time_table)
-            trucks.append(truck)
+        self.generate_trucks(trucks)
 
         ## iterate timesteps
         t = 0
@@ -95,7 +97,7 @@ class Simulation():
                 city.parcels = list(all_parcels)
                 city.incoming_parcels = []
 
-                ## store values
+                ## store values at the last step
                 if t % self.timesteps == 0:
 
                     ## store parcels
@@ -110,6 +112,9 @@ class Simulation():
                     mean_incomplete_waiting_times = np.mean(all_incomplete_trips)
                     cities_complete_waiting_times[key].append(mean_complete_waiting_times)
                     cities_incomplete_waiting_times[key].append(mean_incomplete_waiting_times)
+
+            city.parcels = []
+            city.complete_trips = []
 
         return (cities_parcels,
                     cities_complete_trips,
