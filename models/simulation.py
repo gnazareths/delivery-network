@@ -1,6 +1,7 @@
 import numpy as np
 from models.truck import Truck
 from helpers import *
+from collections import Counter
 
 class Simulation():
 
@@ -35,10 +36,10 @@ class Simulation():
 
         ## create the trucks
         ## can be refactored
-        for _ in range(n_trucks):
+        for _ in range(self.n_trucks):
             key = np.random.choice(self.cities.keys())
             city = self.cities[key]
-            truck = Truck(city)
+            truck = Truck(city, self.time_table)
             trucks.append(truck)
 
         ## iterate timesteps
@@ -48,7 +49,7 @@ class Simulation():
 
             for key in self.cities.keys():
                 ## generate parcels originating from every city
-                generate_parcels(parcels_per_city[key], cities, cities[key])
+                generate_parcels(self.parcels_per_city[key], self.cities, self.cities[key], self.next_cities_table)
 
             for truck in trucks:
                 ## decide which way the truck is going
@@ -72,7 +73,7 @@ class Simulation():
                     parcel = current_city.parcels[n_parcels]
                     if parcel.next == truck.route:
                         truck.parcels.append(parcel)
-                        parcel.update_current_city()
+                        parcel.update_current_city(self.next_cities_table)
                         parcels_added += 1
                     else:
                         n_parcels += 1

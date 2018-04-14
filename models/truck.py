@@ -2,15 +2,16 @@ import numpy as np
 
 class Truck():
 
-    def __init__(self, city, route=None):
+    def __init__(self, city, time_table, route=None):
 
         self.city = city
         self.route = route
+        self.time_table = time_table
         self.parcels = []
 
     def get_trip_time(self):
 
-        exp_trip_time = time_table[self.city.name][self.route.name]
+        exp_trip_time = self.time_table[self.city.name][self.route.name]
         time = np.random.normal(exp_trip_time, exp_trip_time/10)
 
         return time

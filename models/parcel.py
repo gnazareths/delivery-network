@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class Parcel():
 
-    def __init__(self, start, destination):
+    def __init__(self, start, destination, next_cities):
 
         self.start = start
         self.current = start
@@ -39,7 +39,7 @@ class Parcel():
 
         self.trip_time = None
 
-    def update_current_city(self): ## do parcels get added to the new city though?
+    def update_current_city(self, next_cities): ## do parcels get added to the new city though?
 
         self.current.parcels.remove(self)
         self.current = self.next

@@ -3,7 +3,7 @@ import pandas as pd
 from models.city import City
 from models.parcel import Parcel
 
-def generate_parcels(n, cities, start):
+def generate_parcels(n, cities, start, next_cities):
 
     n_parcels = int(np.random.normal(n, n/10))
     for _ in range(n_parcels):
@@ -11,7 +11,7 @@ def generate_parcels(n, cities, start):
         keys.remove(start.name)
         destination = np.random.choice(keys)
         destination = cities[destination]
-        parcel = Parcel(start, destination)
+        parcel = Parcel(start, destination, next_cities)
         cities[start.name].add_parcel(parcel)
 
 def generate_next_cities(cities):
