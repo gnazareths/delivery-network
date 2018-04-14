@@ -1,3 +1,7 @@
+import numpy as np
+from models.truck import Truck
+from helpers import *
+
 class Simulation():
 
     def __init__(self,
@@ -30,6 +34,7 @@ class Simulation():
         cities_incomplete_waiting_times = {city:[] for city in self.cities.keys()}
 
         ## create the trucks
+        ## can be refactored
         for _ in range(n_trucks):
             key = np.random.choice(self.cities.keys())
             city = self.cities[key]

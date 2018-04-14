@@ -14,7 +14,3 @@ class City():
     def add_parcel(self, parcel):
 
         self.parcels.append(parcel)
-
-    def remove_parcel(self, parcel):
-
-        return

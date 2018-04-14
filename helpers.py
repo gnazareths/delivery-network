@@ -1,3 +1,7 @@
+import numpy as np
+from models.city import City
+from models.parcel import Parcel
+
 def generate_parcels(n, cities, start):
 
     n_parcels = int(np.random.normal(n, n/10))

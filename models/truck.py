@@ -1,3 +1,5 @@
+import numpy as np
+
 class Truck():
 
     def __init__(self, city, route=None):
