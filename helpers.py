@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 from models.city import City
 from models.parcel import Parcel
 
