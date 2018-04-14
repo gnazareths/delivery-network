@@ -1,6 +1,7 @@
 class City():
 
     def __init__(self, name):
+
         self.name = name
         self.parcels = []
         self.incoming_parcels = []
@@ -11,6 +12,9 @@ class City():
         return self.name
 
     def add_parcel(self, parcel):
+
         self.parcels.append(parcel)
 
-    ## function to remove parcels
+    def remove_parcel(self, parcel):
+
+        return
